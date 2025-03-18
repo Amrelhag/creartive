@@ -1,3 +1,5 @@
+import 'package:creartive/main.dart';
+import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -254,7 +256,7 @@ class FullScreenImageScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProfileTab()
+              builder: (context) => HomeScreen()
             ),
           );
         }, icon: Icon(Icons.arrow_back_ios)),
