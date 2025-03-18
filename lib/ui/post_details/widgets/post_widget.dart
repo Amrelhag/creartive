@@ -3,7 +3,6 @@ import 'package:creartive/models/content.dart';
 import 'package:flutter/cupertino.dart';
 
 class PostWidget extends StatelessWidget {
-  Content content;
    PostWidget({super.key});
 
   @override

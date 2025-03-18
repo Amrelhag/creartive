@@ -128,25 +128,40 @@ class ProfileTab extends StatelessWidget {
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset('assets/artwork (6).jpg')
+                          GestureDetector(
+                            onTap: (){},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset('assets/artwork (6).jpg')
+                            ),
                           ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset('assets/artwork (2).jpg'),
+                          GestureDetector(
+                            onTap: (){},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset('assets/artwork (2).jpg'),
+                            ),
                           ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset('assets/artwork (3).jpg'),
+                          GestureDetector(
+                            onTap: (){},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset('assets/artwork (3).jpg'),
+                            ),
                           ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset('assets/artwork (4).jpg'),
+                          GestureDetector(
+                            onTap: (){},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset('assets/artwork (4).jpg'),
+                            ),
                           ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset('assets/artwork (5).jpg'),
+                          GestureDetector(
+                            onTap: (){},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset('assets/artwork (5).jpg'),
+                            ),
                           ),
                         ],
                       ),
