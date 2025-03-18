@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
+  ProfileTab({super.key});
+
+  final List<String> imagePaths = [
+    'assets/artwork (1).jpg',
+    'assets/artwork (2).jpg',
+    'assets/artwork (3).jpg',
+    'assets/artwork (4).jpg',
+    'assets/artwork (5).jpg',
+    'assets/artwork (6).jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +24,8 @@ class ProfileTab extends StatelessWidget {
               height: 100,
               color: Color.fromARGB(255, 6, 27, 64),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: Colors.blueGrey), child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.arrow_back_ios))),
                   Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: Colors.blueGrey), child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings)))
                 ],
               ),
@@ -27,14 +35,24 @@ class ProfileTab extends StatelessWidget {
                 SizedBox(height: 50,),
                 Center(
                   child: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle
                     ),
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage('assets/artwork (1).jpeg'),
+                    child: InkWell(
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: AssetImage('assets/prof_pic.jpeg'),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FullScreenImageScreen(imagePath: 'assets/prof_pic.jpeg'),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -124,46 +142,26 @@ class ProfileTab extends StatelessWidget {
                   child: TabBarView(
                     children: [
                       GridView.count(
+                        padding: EdgeInsets.only(right: 20,left: 20),
                         crossAxisCount: 3,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
-                        children: [
-                          GestureDetector(
-                            onTap: (){},
+                        children: imagePaths.map((path) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FullScreenImageScreen(imagePath: path),
+                                ),
+                              );
+                            },
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset('assets/artwork (6).jpg')
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.asset(path, fit: BoxFit.cover),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: (){},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset('assets/artwork (2).jpg'),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: (){},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset('assets/artwork (3).jpg'),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: (){},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset('assets/artwork (4).jpg'),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: (){},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset('assets/artwork (5).jpg'),
-                            ),
-                          ),
-                        ],
+                          );
+                        }).toList(),
                       ),
                       ListView(
                         padding: EdgeInsets.only(right: 20,left: 20),
@@ -236,6 +234,37 @@ class ProfileTab extends StatelessWidget {
               ],
             ),
           ]
+        ),
+      ),
+    );
+  }
+}
+
+class FullScreenImageScreen extends StatelessWidget {
+  final String imagePath;
+
+  FullScreenImageScreen({required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProfileTab()
+            ),
+          );
+        }, icon: Icon(Icons.arrow_back_ios)),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      body: Center(
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.contain, // Ensures the image scales appropriately
         ),
       ),
     );
