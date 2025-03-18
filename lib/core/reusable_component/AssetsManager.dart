@@ -7,4 +7,7 @@ abstract final class AssetsManager{
   static const String user="assets/icons/user.svg";
 
 
+  //images
+static const String fixedImage="assets/images/fixedArt.png";
+
 }
