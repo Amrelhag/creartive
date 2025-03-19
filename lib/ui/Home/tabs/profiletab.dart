@@ -1,17 +1,10 @@
-import 'package:creartive/main.dart';
-import 'package:creartive/ui/Home/screen/HomeScreen.dart';
+import 'package:creartive/ui/Home/widget/expanded_tab_profile.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {
   ProfileTab({super.key});
 
   final List<String> imagePaths = [
-    'assets/artwork (1).jpg',
-    'assets/artwork (2).jpg',
-    'assets/artwork (3).jpg',
-    'assets/artwork (4).jpg',
-    'assets/artwork (5).jpg',
-    'assets/artwork (6).jpg',
   ];
 
   @override
@@ -22,13 +15,17 @@ class ProfileTab extends StatelessWidget {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15, right: 15),
+              padding: EdgeInsets.only(left: 15, right: 15, bottom: 10),
               height: 100,
               color: Color.fromARGB(255, 6, 27, 64),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: Colors.blueGrey), child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings)))
+                  Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: const Color.fromRGBO(50, 125, 139, 0.5)),
+                    child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings))
+                  )
                 ],
               ),
             ),
@@ -45,16 +42,9 @@ class ProfileTab extends StatelessWidget {
                     child: InkWell(
                       child: CircleAvatar(
                         radius: 50,
-                        backgroundImage: AssetImage('assets/prof_pic.jpeg'),
+                        backgroundImage: AssetImage('assets/images/addImage.png')
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FullScreenImageScreen(imagePath: 'assets/prof_pic.jpeg'),
-                          ),
-                        );
-                      },
+                      onTap: () {},
                     ),
                   ),
                 ),
@@ -140,99 +130,7 @@ class ProfileTab extends StatelessWidget {
                     Tab(text: "Moodboards"),
                   ],
                 ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      GridView.count(
-                        padding: EdgeInsets.only(right: 20,left: 20),
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        children: imagePaths.map((path) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FullScreenImageScreen(imagePath: path),
-                                ),
-                              );
-                            },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.asset(path, fit: BoxFit.cover),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                      ListView(
-                        padding: EdgeInsets.only(right: 20,left: 20),
-                        children: [
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.fromLTRB(15, 7, 15, 7),
-                                decoration: BoxDecoration(
-                                  color:  const Color.fromARGB(255, 224, 226, 230),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'Project views',
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      Text('2648')
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 50,),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(40,7,40,7),
-                                decoration: BoxDecoration(
-                                  color:  const Color.fromARGB(255, 224, 226, 230),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'Deals',
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      Text('4')
-                                    ],
-                                  )
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 50,),
-                          Text('Feedback'),
-                          SizedBox(height: 15),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10,100,10,100),
-                            decoration: BoxDecoration(
-                              color:  const Color.fromARGB(255, 217, 217, 217),
-                              borderRadius: BorderRadius.circular(10)
-                            ),
-                          ),
-                          SizedBox(height: 50)
-                        ],
-                      ),
-                      Center(child: Text("You don't have any projects saved.\nTry liking any project and you will see it here!")),
-                    ],
-                  ),
-                ),
+                ExpandedTab(imagePaths: imagePaths),
               ],
             ),
           ]
@@ -242,10 +140,12 @@ class ProfileTab extends StatelessWidget {
   }
 }
 
+
+
 class FullScreenImageScreen extends StatelessWidget {
   final String imagePath;
 
-  FullScreenImageScreen({required this.imagePath});
+  const FullScreenImageScreen({super.key, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
