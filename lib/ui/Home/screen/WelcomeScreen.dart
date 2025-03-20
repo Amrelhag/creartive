@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:creartive/ui/splash/screen/splash_screen.dart';
 import 'package:creartive/ui/Home/screen/login.dart';
 import 'package:creartive/ui/Home/screen/signup.dart';
 
