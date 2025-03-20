@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+
+  const HomeScreen({super.key,});
   static const String routeName="Home";
 
   @override
@@ -17,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   int selectedIndex=0;
   List<Widget> tabs=[
    HomeTab(),
@@ -25,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
     CartTab(),
     ProfileTab(),
   ];
+
+
 
 
   @override

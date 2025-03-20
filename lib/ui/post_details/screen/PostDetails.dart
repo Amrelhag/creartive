@@ -1,9 +1,11 @@
 import 'package:creartive/core/reusable_component/ColorManager.dart';
+import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/post_details/widgets/post_widget.dart';
 import 'package:flutter/material.dart';
 
 class PostDetails extends StatelessWidget {
-  const PostDetails({super.key});
+  final Content content;
+  const PostDetails({super.key,required this.content});
   static const String routeName="post";
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,27 @@ class PostDetails extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: ColorManager.primary
               ),
-              child: Icon(Icons.arrow_back_outlined)),
+              child: IconButton(icon: Icon(Icons.arrow_back_outlined),
+
+              onPressed: ()=>Navigator.pop(context),
+              )),
         ) ,
       ),
       backgroundColor: ColorManager.primary,
-body: PostWidget(),
+body: SingleChildScrollView(
+  child: ConstrainedBox(
+    constraints: BoxConstraints(
+      minHeight: MediaQuery.of(context).size.height, // Ensures full height
+    ),
+    child: Column(
+      children: [
+        PostWidget(content: content),
+
+        SizedBox(height: 20,)
+      ],
+    ),
+  ),
+),
     );
   }
 }
