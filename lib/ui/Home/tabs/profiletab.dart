@@ -1,3 +1,4 @@
+import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/ui/Home/widget/expanded_tab_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,11 @@ class ProfileTab extends StatelessWidget {
   ProfileTab({super.key});
 
   final List<String> imagePaths = [
+    AssetsManager.postImage,
+    AssetsManager.postImage,
+    AssetsManager.postImage,
+    AssetsManager.postImage,
+    AssetsManager.postImage,
   ];
 
   @override
@@ -23,7 +29,7 @@ class ProfileTab extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: const Color.fromRGBO(50, 125, 139, 0.5)),
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: const Color.fromRGBO(50, 125, 139, 0.5)),
                     child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings))
                   )
                 ],
@@ -42,9 +48,16 @@ class ProfileTab extends StatelessWidget {
                     child: InkWell(
                       child: CircleAvatar(
                         radius: 50,
-                        backgroundImage: AssetImage('assets/images/addImage.png')
+                        backgroundImage: AssetImage(AssetsManager.addImage)
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FullScreenImageScreen(imagePath: AssetsManager.postImage),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
