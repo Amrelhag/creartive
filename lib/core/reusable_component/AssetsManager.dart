@@ -9,8 +9,6 @@ abstract final class AssetsManager{
 static const String postImage="assets/images/postimage.png";
 static const String addImage="assets/images/addImage.png";
 
-<<<<<<< HEAD
-=======
   //images
 static const String fixedImage="assets/images/fixedArt.png";
 
@@ -19,5 +17,4 @@ static const String Cat_woman="assets/images/Cat&woman.jpg";
 static const String dog="assets/images/dog.jpg";
 static const String lighthouse="assets/images/lighthouse.jpg";
 static const String redhands="assets/images/redhands.jpg";
->>>>>>> 2d483ea (+finish post details)
 }
