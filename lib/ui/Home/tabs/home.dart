@@ -1,10 +1,10 @@
 import 'package:creartive/core/reusable_component/ColorManager.dart';
-import 'package:creartive/models/content.dart';
-import 'package:creartive/ui/Home/widget/content_card.dart';
+import 'package:creartive/ui/Home/widget/tabBar_widgets/Explore_tab.dart';
 import 'package:creartive/ui/Home/widget/tabBar_widgets/for_you_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {
+
   const HomeTab({super.key});
 
   @override
@@ -49,9 +49,7 @@ class _HomeTabState extends State<HomeTab> {
               child: TabBarView(
                 children:[
 
-                  Center(
-                    child: Text("Explore Page"),
-                  ),
+             ExploreTab(),
 
 
                   ForYouWidget(),

@@ -9,6 +9,8 @@ class ForYouWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Content> mergedContent = [...Content.contents, ...FixedList.fixedContent];
     return SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -71,9 +73,18 @@ class ForYouWidget extends StatelessWidget {
                   crossAxisSpacing: 2,
                   childAspectRatio: 0.8
               ),
-              itemBuilder: (context,index)=>ContentCard(content: Content.contents[index],
-                  index: index),
-              itemCount: Content.contents.length,
+              itemBuilder: (context,index){
+    // If index is within the uploaded posts list
+    if (index < Content.contents.length) {
+    return ContentCard(content: Content.contents[index], index: index);
+    }
+    // Otherwise, get from fixed content
+    else {
+    int fixedIndex = index - Content.contents.length;
+    return ContentCard(content: FixedList.fixedContent[fixedIndex], index: index);
+    }
+    },
+              itemCount: Content.contents.length+FixedList.fixedContent.length,
             ),
           ),
         ],
@@ -81,3 +92,4 @@ class ForYouWidget extends StatelessWidget {
     );
   }
 }
+//=>ContentCard(content: Content.contents[index]

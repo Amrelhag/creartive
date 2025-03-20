@@ -1,3 +1,4 @@
+import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/main.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +7,11 @@ class ProfileTab extends StatelessWidget {
   ProfileTab({super.key});
 
   final List<String> imagePaths = [
-    'assets/artwork (1).jpg',
-    'assets/artwork (2).jpg',
-    'assets/artwork (3).jpg',
-    'assets/artwork (4).jpg',
-    'assets/artwork (5).jpg',
-    'assets/artwork (6).jpg',
+AssetsManager.postImage,
+AssetsManager.postImage,
+AssetsManager.postImage,
+AssetsManager.postImage,
+AssetsManager.postImage,
   ];
 
   @override
@@ -19,6 +19,7 @@ class ProfileTab extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+
         body: Stack(
           children: [
             Container(
@@ -28,7 +29,11 @@ class ProfileTab extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(150), color: Colors.blueGrey), child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings)))
+                  Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(150),
+                          color: Colors.blueGrey), child:
+                  IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings)))
                 ],
               ),
             ),
@@ -45,13 +50,13 @@ class ProfileTab extends StatelessWidget {
                     child: InkWell(
                       child: CircleAvatar(
                         radius: 50,
-                        backgroundImage: AssetImage('assets/prof_pic.jpeg'),
+                        backgroundImage: AssetImage(AssetsManager.addImage),
                       ),
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => FullScreenImageScreen(imagePath: 'assets/prof_pic.jpeg'),
+                            builder: (context) => FullScreenImageScreen(imagePath: AssetsManager.postImage),
                           ),
                         );
                       },
