@@ -2,7 +2,8 @@ import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:flutter/material.dart';
 
 class PopularArtsWidget extends StatelessWidget {
-  const PopularArtsWidget({super.key});
+  String Pimage;
+   PopularArtsWidget({super.key,required this.Pimage});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class PopularArtsWidget extends StatelessWidget {
           width: 100,
           height: 100,
           child: Image.asset(
-            AssetsManager.fixedImage,
+            Pimage,
             fit: BoxFit.cover,
           ),
         ),
