@@ -1,5 +1,8 @@
 abstract final class AssetsManager{
 
+  //lottie files
+  static const String emptyCart="assets/images/emptycart.json";
+
   static const String home="assets/icons/home.svg";
   static const String upload="assets/icons/upload.svg";
   static const String cart="assets/icons/cartsvg.svg";

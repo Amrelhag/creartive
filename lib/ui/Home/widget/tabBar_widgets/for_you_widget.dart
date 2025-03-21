@@ -1,4 +1,5 @@
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
+import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/Home/widget/content_card.dart';
 import 'package:creartive/ui/Home/widget/tabBar_widgets/popular_Arts_widget.dart';
@@ -61,6 +62,10 @@ class ForYouWidget extends StatelessWidget {
                 ],
               )
           ),
+
+SizedBox(height: 32,),
+
+          Divider(thickness: 1,indent: 100,endIndent: 100,height: 5,color: ColorManager.secondary,),
 
           Padding(
             padding: const EdgeInsets.all(16),

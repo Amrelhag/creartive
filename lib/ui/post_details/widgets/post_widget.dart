@@ -109,7 +109,7 @@ class PostWidget extends StatelessWidget {
                 child: Text(
                   "Add To Cart",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: ColorManager.primary,
                     fontSize: 24,fontWeight: FontWeight.w400
                   ),
                 ),
