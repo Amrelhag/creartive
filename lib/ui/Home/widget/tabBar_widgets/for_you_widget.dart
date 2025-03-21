@@ -1,4 +1,5 @@
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
+import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/Home/widget/content_card.dart';
 import 'package:creartive/ui/Home/widget/tabBar_widgets/popular_Arts_widget.dart';
@@ -9,6 +10,8 @@ class ForYouWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Content> mergedContent = [...Content.contents, ...FixedList.fixedContent];
     return SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,6 +63,10 @@ class ForYouWidget extends StatelessWidget {
               )
           ),
 
+SizedBox(height: 32,),
+
+          Divider(thickness: 1,indent: 100,endIndent: 100,height: 5,color: ColorManager.secondary,),
+
           Padding(
             padding: const EdgeInsets.all(16),
             child: GridView.builder(
@@ -71,9 +78,18 @@ class ForYouWidget extends StatelessWidget {
                   crossAxisSpacing: 2,
                   childAspectRatio: 0.8
               ),
-              itemBuilder: (context,index)=>ContentCard(content: Content.contents[index],
-                  index: index),
-              itemCount: Content.contents.length,
+              itemBuilder: (context,index){
+    // If index is within the uploaded posts list
+    if (index < Content.contents.length) {
+    return ContentCard(content: Content.contents[index], index: index);
+    }
+    // Otherwise, get from fixed content
+    else {
+    int fixedIndex = index - Content.contents.length;
+    return ContentCard(content: FixedList.fixedContent[fixedIndex], index: index);
+    }
+    },
+              itemCount: Content.contents.length+FixedList.fixedContent.length,
             ),
           ),
         ],
@@ -81,3 +97,4 @@ class ForYouWidget extends StatelessWidget {
     );
   }
 }
+//=>ContentCard(content: Content.contents[index]
