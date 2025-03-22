@@ -1,16 +1,18 @@
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
+import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/ui/Home/widget/expanded_tab_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:creartive/ui/Home/widget/fullscreen_widget.dart';
+import 'package:creartive/ui/Home/screen/settings.dart';
 
 class ProfileTab extends StatelessWidget {
   ProfileTab({super.key});
 
   final List<String> imagePaths = [
     AssetsManager.postImage,
-    AssetsManager.postImage,
-    AssetsManager.postImage,
-    AssetsManager.postImage,
-    AssetsManager.postImage,
+    AssetsManager.Cat_woman,
+    AssetsManager.lighthouse,
+    AssetsManager.redhands,
   ];
 
   @override
@@ -23,14 +25,23 @@ class ProfileTab extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left: 15, right: 15, bottom: 10),
               height: 100,
-              color: Color.fromARGB(255, 6, 27, 64),
+              color: (ColorManager.secondary),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
                     decoration: BoxDecoration(shape: BoxShape.circle, color: const Color.fromRGBO(50, 125, 139, 0.5)),
-                    child: IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings))
+                    child: IconButton(
+                      color: Colors.white,
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SettingsScreen())
+                        );
+                      },
+                      icon: Icon(Icons.settings)
+                    )
                   )
                 ],
               ),
@@ -133,6 +144,8 @@ class ProfileTab extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 TabBar(
+                  splashFactory: NoSplash.splashFactory,
+                  tabAlignment: TabAlignment.center,
                   padding: EdgeInsets.only(right: 20,left: 20),
                   dividerColor: Colors.transparent,
                   indicatorColor: Colors.black,
@@ -143,39 +156,10 @@ class ProfileTab extends StatelessWidget {
                     Tab(text: "Moodboards"),
                   ],
                 ),
-                ExpandedTab(imagePaths: imagePaths),
+                ExpandedTab(imagePaths: imagePaths,),
               ],
             ),
           ]
-        ),
-      ),
-    );
-  }
-}
-
-
-
-class FullScreenImageScreen extends StatelessWidget {
-  final String imagePath;
-
-  const FullScreenImageScreen({super.key, required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: (){Navigator.pop(context);},
-          icon: Icon(Icons.arrow_back_ios)
-        ),
-        backgroundColor: Colors.black,
-        iconTheme: IconThemeData(color: Colors.white),
-      ),
-      body: Center(
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.contain, // Ensures the image scales appropriately
         ),
       ),
     );

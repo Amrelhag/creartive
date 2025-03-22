@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:creartive/ui/Home/tabs/profiletab.dart';
+import 'package:creartive/ui/Home/widget/fullscreen_widget.dart';
 
 class ExpandedTab extends StatelessWidget {
   const ExpandedTab({
@@ -22,6 +22,7 @@ class ExpandedTab extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             children: imagePaths.map((path) => InkWell(
+              borderRadius: BorderRadius.circular(10),
                 onTap: () {
                   Navigator.push(
                     context,
