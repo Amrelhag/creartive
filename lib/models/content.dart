@@ -47,7 +47,7 @@ class FixedList{
     Content("illustration",
         "  A striking painting of a woman surrounded by red hands, symbolizing control, oppression, or inner turmoil with deep emotional impact.     "
         , AssetsManager.redhands, "5,000 LE"),
-    Content("illustration",
+    Content("painting",
         "  A striking painting of a woman surrounded by red hands, symbolizing control, oppression, or inner turmoil with deep emotional impact.     "
         , AssetsManager.redhands, "5,000 LE"),
 

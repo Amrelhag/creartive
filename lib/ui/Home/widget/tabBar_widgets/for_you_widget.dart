@@ -53,12 +53,12 @@ class ForYouWidget extends StatelessWidget {
               child:
               Row(
                 children: [
-                  PopularArtsWidget(),
-                  PopularArtsWidget(),
-                  PopularArtsWidget(),
-                  PopularArtsWidget(),
-                  PopularArtsWidget(),
-                  PopularArtsWidget(),
+                  PopularArtsWidget(Pimage: AssetsManager.PBgirl,),
+                  PopularArtsWidget(Pimage: AssetsManager.Parabman),
+                  PopularArtsWidget(Pimage: AssetsManager.PFlowersMan),
+                  PopularArtsWidget(Pimage: AssetsManager.Pman),
+                  PopularArtsWidget(Pimage: AssetsManager.PGGirl),
+                  PopularArtsWidget(Pimage: AssetsManager.Pgirl),
                 ],
               )
           ),
