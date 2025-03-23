@@ -12,11 +12,11 @@ class PopularArtsWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20), // Makes the image rounded
         child: Container(
-          width: 100,
-          height: 100,
+          width: 110,
+          height: 110,
           child: Image.asset(
             Pimage,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
         ),
       ),
