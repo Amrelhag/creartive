@@ -16,7 +16,7 @@ class PopularArtsWidget extends StatelessWidget {
           height: 110,
           child: Image.asset(
             Pimage,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
         ),
       ),

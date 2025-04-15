@@ -15,6 +15,8 @@ static const String addImage="assets/images/addImage.png";
   //images
 static const String fixedImage="assets/images/fixedArt.png";
 
+static const String userprofile="assets/images/userprofile.jpg";
+
 //fixed list images
 static const String Cat_woman="assets/images/Cat&woman.jpg";
 static const String dog="assets/images/dog.jpg";
@@ -29,4 +31,14 @@ static const String PFlowersMan="assets/images/PFlowersMan.jpg";
 static const String PGGirl="assets/images/PGGirl.jpg";
 static const String Pgirl="assets/images/Pgirl.jpg";
 static const String Pman="assets/images/Pman.jpg";
+
+
+//3D images
+static const String Dboy="assets/images/3Dboy.jpg";
+static const String Dchar="assets/images/3Dchar.jpg";
+static const String Dgirl="assets/images/3Dgirl.jpg";
+static const String Dman="assets/images/3Dman.jpg";
+static const String DWman="assets/images/DWman.jpg";
+static const String Dluffy="assets/images/Dluffy.jpg";
+static const String Dboyb="assets/images/Dboyb.jpg";
 }
