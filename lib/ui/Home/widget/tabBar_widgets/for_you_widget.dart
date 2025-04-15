@@ -19,7 +19,7 @@ class ForYouWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                Text("New Evants!!",style: TextStyle(
+                Text("New Events!!",style: TextStyle(
                   fontSize: 20,fontWeight: FontWeight.w400
                 ),),
               ],
