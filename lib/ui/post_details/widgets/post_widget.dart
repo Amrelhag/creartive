@@ -1,18 +1,23 @@
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/models/content.dart';
+import 'package:creartive/ui/Cart_Screen/screen/Cart_Screen.dart.';
+import 'package:creartive/ui/Home/tabs/carttab.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class PostWidget extends StatelessWidget {
-   PostWidget({super.key});
+  final Content content;
+   PostWidget({super.key,required this.content});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(25),
               child: Row(
                 children: [
                   Image.asset("assets/images/userimage.png"),
@@ -25,7 +30,7 @@ class PostWidget extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical:60 ),
+              padding: const EdgeInsets.symmetric(vertical:25 ),
               child: Column(
                 children: [
                   Container(decoration: BoxDecoration(
@@ -34,17 +39,86 @@ class PostWidget extends StatelessWidget {
                   ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image.asset("assets/images/postimage.png",fit: BoxFit.cover,),
+                      child: content.image is String
+                          ? Image.asset(content.image, fit: BoxFit.cover)
+                          : Image.file(content.image, fit: BoxFit.cover),
                     ),
-                  )
+                  ),
+
+                  const SizedBox(height: 10), // Spacing
+
+                  // Title and Price
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        content.title,
+                        style: TextStyle(
+                          color: ColorManager.secondary,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+
+                      Text(
+                        content.price,
+                        style: TextStyle(
+                          color: ColorManager.secondary,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 10),
+                    child: Center(
+                      child: Text(
+                        content.description,
+                        style: TextStyle(
+                          color: ColorManager.secondary,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+
                 ],
               ),
             ),
 
-            Spacer()
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartScreen(), // Pass 3 (CartTab index)
+                  ),
+                );
+
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ColorManager.secondary,
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 6),
+                child: Text(
+                  "Add To Cart",
+                  style: TextStyle(
+                    color: ColorManager.primary,
+                    fontSize: 24,fontWeight: FontWeight.w400
+                  ),
+                ),
+              ),
+            ),
+
+        SizedBox(height: 20,)
           ],
-        ),
-      ),
-    );
+               ),
+       );
   }
 }
