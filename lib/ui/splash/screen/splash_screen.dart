@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:creartive/core/reusable_component/ColorManager.dart';
-import 'package:creartive/ui/Home/screen/HomeScreen.dart';
+import 'package:creartive/ui/Home/screen/WeclomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3),
             (){
-      Navigator.pushReplacementNamed(context,HomeScreen.routeName);
+      Navigator.pushReplacementNamed(context,WelcomeScreen.routeName);
     }
 
     );

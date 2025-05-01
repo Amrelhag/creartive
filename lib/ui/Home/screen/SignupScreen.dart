@@ -14,6 +14,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  void _submitForm(){
+    if(_formKey.currentState!.validate()){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Signing up...'))
+      );
+      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Background1.png'),
+            image: AssetImage("Background1.png"),
             fit: BoxFit.fill,
           ),
         ),
@@ -96,10 +105,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Signing up...')),);
-                            Navigator.of(context,).pushReplacement(MaterialPageRoute(builder: (context)=> HomeScreen()));
-                          },
+                          onPressed: _submitForm,
                           child: Text(
                             "Sign Up",
                             style: TextStyle(fontSize: 16, color: Colors.white),
@@ -119,11 +125,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSocialButton("assets/facebook.png"),
+                      _buildSocialButton("assets/icons/facebook.png"),
                       SizedBox(width: 10),
-                      _buildSocialButton("assets/google.png"),
+                      _buildSocialButton("assets/icons/google.png"),
                       SizedBox(width: 10),
-                      _buildSocialButton("assets/apple.png"),
+                      _buildSocialButton("assets/icons/apple.png"),
                     ],
                   ),
                   SizedBox(height: 20),

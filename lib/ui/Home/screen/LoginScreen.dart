@@ -14,6 +14,15 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  void _submitForm(){
+    if (_formKey.currentState!.validate()){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Logging in...'))
+      );
+      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Background1.png'),
+            image: AssetImage("Background1.png"),
             fit: BoxFit.fill,
           ),
         ),
@@ -147,12 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Logging in...')),
-                              );
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                            },
+                            onPressed: _submitForm,
                             child: Text(
                               "Log In",
                               style: TextStyle(
@@ -176,11 +180,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSocialButton("assets/facebook.png"),
+                      _buildSocialButton("assets/icons/facebook.png"),
                       SizedBox(width: 10),
-                      _buildSocialButton("assets/google.png"),
+                      _buildSocialButton("assets/icons/google.png"),
                       SizedBox(width: 10),
-                      _buildSocialButton("assets/apple.png"),
+                      _buildSocialButton("assets/icons/apple.png"),
                     ],
                   ),
                   SizedBox(height: 20),

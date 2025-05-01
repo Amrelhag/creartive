@@ -1,3 +1,4 @@
+import 'package:creartive/ui/Home/screen/WeclomeScreen.dart';
 import 'package:creartive/ui/splash/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
 debugShowCheckedModeBanner: false,
       routes: { HomeScreen.routeName:(_)=>HomeScreen(),
         SplashScreen.routeName:(_)=>SplashScreen(),
-
+        WelcomeScreen.routeName:(_)=>WelcomeScreen(),
       },
       initialRoute: SplashScreen.routeName,
     );
