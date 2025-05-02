@@ -17,7 +17,9 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return DefaultTabController(
+
       initialIndex: 1,
       length: 3,
       child: Scaffold(

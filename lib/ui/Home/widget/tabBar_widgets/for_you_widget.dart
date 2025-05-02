@@ -3,6 +3,7 @@ import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/Home/widget/content_card.dart';
 import 'package:creartive/ui/Home/widget/tabBar_widgets/popular_Arts_widget.dart';
+import 'package:creartive/ui/events/screen/event_screen.dart';
 import 'package:flutter/material.dart';
 
 class ForYouWidget extends StatelessWidget {
@@ -26,14 +27,19 @@ class ForYouWidget extends StatelessWidget {
             ),
           ),
 
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            Padding(
+          GestureDetector(
+            onTap: (){
+              Navigator.of(context).pushNamed(EventScreen.routeName);
+            },
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal:16 ),
-              child: Container(
-                  child: Image.asset("assets/images/Events.png",fit: BoxFit.cover,)),
-            )
-          ],),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                Container(
+                    child: Expanded(child: Image.asset("assets/images/Events.png",fit: BoxFit.cover,)))
+              ],),
+            ),
+          ),
 
 
           Padding(

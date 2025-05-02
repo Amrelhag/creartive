@@ -42,4 +42,13 @@ static const String Dman="assets/images/3Dman.jpg";
 static const String DWman="assets/images/DWman.jpg";
 static const String Dluffy="assets/images/Dluffy.jpg";
 static const String Dboyb="assets/images/Dboyb.jpg";
+
+//events images
+static const String event1="assets/images/event1.png";
+static const String event2="assets/images/event2.png";
+static const String event3="assets/images/event3.png";
+static const String event4="assets/images/event4.png";
+
+
+
 }
