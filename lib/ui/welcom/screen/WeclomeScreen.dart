@@ -1,5 +1,5 @@
-import 'package:creartive/ui/Home/screen/LoginScreen.dart';
-import 'package:creartive/ui/Home/screen/SignupScreen.dart';
+import 'package:creartive/ui/login/screen/LoginScreen.dart';
+import 'package:creartive/ui/signup/screen/SignupScreen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {

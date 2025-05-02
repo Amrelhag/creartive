@@ -11,6 +11,7 @@ abstract final class AssetsManager{
 
 static const String postImage="assets/images/postimage.png";
 static const String addImage="assets/images/addImage.png";
+static const String backG="assets/images/backg.jpg";
 
   //images
 static const String fixedImage="assets/images/fixedArt.png";

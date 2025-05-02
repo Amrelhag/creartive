@@ -1,8 +1,18 @@
+import 'package:creartive/core/FireBaseCodes.dart';
+import 'package:creartive/core/StringsManager.dart';
+import 'package:creartive/core/contsnts.dart';
+import 'package:creartive/core/reusable_component/AssetsManager.dart';
+import 'package:creartive/core/reusable_component/DialogUtils.dart';
+import 'package:creartive/core/reusable_component/custom_field.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
-import 'package:creartive/ui/Home/screen/SignupScreen.dart';
+import 'package:creartive/ui/reset_password/screen/reset_password_screen.dart';
+import 'package:creartive/ui/signup/screen/SignupScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const String routeName = "login";
+
   const LoginScreen({super.key});
 
   @override
@@ -10,12 +20,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  void _submitForm(){
-    if (_formKey.currentState!.validate()){
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void submitForm(){
+    if (formKey.currentState!.validate()){
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Logging in...'))
       );
@@ -39,14 +65,14 @@ class _LoginScreenState extends State<LoginScreen> {
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("Background1.png"),
-            fit: BoxFit.fill,
+            image: AssetImage(AssetsManager.backG),
+            fit: BoxFit.cover,
           ),
         ),
         child: Center(
           child: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key: formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -74,66 +100,56 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50),
+                   SizedBox(height: 50),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                            hintText: "Enter your email",
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide.none,
-                            ),
+
+                      CustomField(hint: StringsManager.emailhint,
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (value){
+    if (value == null || value.isEmpty) {
+    return StringsManager.empty_field;
+    }
+
+    if (!RegExp(emailRegex).hasMatch(value)) {
+    return StringsManager.email_not_valid;
+    }
+    return null;
+    },
                           ),
-                          validator: (value) {
+
+                         SizedBox(height: 15),
+
+
+
+                      CustomField(hint: StringsManager.passwordhint,
+                          controller: passwordController,
+                          keyboardType: TextInputType.emailAddress,
+                          isObscured: true,
+                          validator: (value){
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
-                            } else if (!RegExp(
-                              r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]',
-                            ).hasMatch(value)) {
-                              return 'Please enter a valid email';
+                              return StringsManager.empty_field;
+                            }
+                            if (value.length < 8) {
+                              return StringsManager.at_least_eight;
                             }
                             return null;
-                          },
-                        ),
-                        const SizedBox(height: 15),
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: "Enter your password",
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.visibility_off),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your password';
-                            } else if (value.length < 6) {
-                              return 'Password must be at least 6 characters';
-                            }
-                            return null;
-                          },
-                        ),
+                          }),
+
+
+
+
                         const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).pushNamed(ResetPasswordScreen.routeName);
+                              },
                               child: Text(
                                 'Forgot password?',
                                 style: TextStyle(
@@ -156,7 +172,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: _submitForm,
+                            onPressed: (){
+                              signIn();
+                            },
                             child: Text(
                               "Log In",
                               style: TextStyle(
@@ -234,4 +252,42 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  signIn() async {
+    if (formKey.currentState!.validate()) {
+      try {
+        DialogUtils.showLoadingDialog(context);
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+            email: emailController.text,
+            password: passwordController.text);
+        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        if (e.code == FireBaseAuthCodes.user_not_found) {
+          DialogUtils.showMessageDialog(
+            context: context,
+            message: 'No user found for that email.',
+            positiveBtnTitle: "Ok",
+            positiveBtnClick: (){
+              Navigator.pop(context);
+            },
+          );
+
+        } else if (e.code ==FireBaseAuthCodes.wrong_password) {
+          DialogUtils.showMessageDialog(
+            context: context,
+            message: 'Wrong password provided for that user.',
+            positiveBtnTitle: "Ok",
+            positiveBtnClick: (){
+              Navigator.pop(context);
+            },
+          );
+
+        }
+      }
+    }
+  }
+
 }
