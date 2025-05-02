@@ -3,6 +3,7 @@ import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/main.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/Home/widget/hometabview_widget.dart';
+import 'package:creartive/ui/setting/screen/setting_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -16,11 +17,18 @@ class ProfileTab extends StatelessWidget {
       length: 3,
       child: Scaffold(
 appBar: AppBar(backgroundColor: ColorManager.secondary,
-actions: [Container(
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(150),
-        color: Colors.blueGrey), child:
-IconButton(color: Colors.white, onPressed: (){}, icon: Icon(Icons.settings)))],
+actions: [Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(150),
+          color: Colors.blueGrey), child:
+  IconButton(color: Colors.white,
+      onPressed: (){
+  Navigator.of(context).pushNamed(SettingScreen.routeName);
+      },
+      icon: Icon(Icons.settings))),
+)],
 ),
         body: Stack(
           children: [
