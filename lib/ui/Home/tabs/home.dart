@@ -25,6 +25,11 @@ class _HomeTabState extends State<HomeTab> {
       child: Scaffold(
       backgroundColor: ColorManager.primary,
         appBar: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(16),
+            )
+          ),
           backgroundColor: ColorManager.secondary,
           title: Text("CreArtive",style: TextStyle(
           color: ColorManager.primary,fontSize: 16

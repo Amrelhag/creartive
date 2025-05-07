@@ -2,6 +2,9 @@ abstract final class AssetsManager{
 
   //lottie files
   static const String emptyCart="assets/images/emptycart.json";
+  static const String onboarding1="assets/images/value.json";
+  static const String onboarding2="assets/images/draw.json";
+  static const String onboarding3="assets/images/chat.json";
 
   static const String home="assets/icons/home.svg";
   static const String upload="assets/icons/upload.svg";

@@ -1,14 +1,17 @@
 import 'package:creartive/core/FireBaseCodes.dart';
+import 'package:creartive/core/FireStoreHandler.dart';
 import 'package:creartive/core/StringsManager.dart';
 import 'package:creartive/core/contsnts.dart';
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/core/reusable_component/DialogUtils.dart';
 import 'package:creartive/core/reusable_component/custom_field.dart';
+import 'package:creartive/models/user.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/login/screen/LoginScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:creartive/models/user.dart' as MyUser;
 
 
 
@@ -290,6 +293,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         var credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailController.text,
             password: passwordController.text);
+       await FireStoreHandler.AddUser(MyUser.User(
+id: credential.user!.uid,
+          email: emailController.text,
+          name: nameController.text,
+        ));
         Navigator.pop(context);
         DialogUtils.showToast("Account Created");
         Navigator.pushReplacementNamed(context, LoginScreen.routeName);
