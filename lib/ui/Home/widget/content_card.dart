@@ -5,10 +5,11 @@ import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/post_details/screen/PostDetails.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ContentCard extends StatelessWidget {
   Content content;
   int index;
-   ContentCard({required this.content,required this.index});
+   ContentCard({super.key, required this.content,required this.index});
 
   @override
   Widget build(BuildContext context) {

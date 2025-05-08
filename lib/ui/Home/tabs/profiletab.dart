@@ -1,9 +1,11 @@
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/main.dart';
+import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/Home/widget/hometabview_widget.dart';
 import 'package:creartive/ui/setting/screen/setting_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -74,14 +76,19 @@ actions: [Padding(
                   "Amr Ali",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                Text("amrelhaj10@gmail.com"),
+                Text(FirebaseAuth.instance.currentUser!.email!.toString()),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
                       children: [
-                        Text("1", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Content.contents.isEmpty
+                        ? Text(
+                          "0",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                        : Text("${Content.contents.length}"),
                         Text("Projects"),
                       ],
                     ),
@@ -126,9 +133,18 @@ actions: [Padding(
                           borderRadius: BorderRadius.circular(10),
                           color: Color.fromARGB(255, 225, 221, 235)
                         ),
-                        child: IconButton(
-                          onPressed: (){},
-                          icon: Icon(Icons.mail)
+                        child: SizedBox(
+                          child: IconButton(
+                            style: IconButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              padding: EdgeInsets.all(5),
+                              backgroundColor: Color.fromARGB(255, 225, 221, 235),
+                            ),
+                            onPressed: (){},
+                            icon: Icon(Icons.mail)
+                          ),
                         ),
                       )
                     ],

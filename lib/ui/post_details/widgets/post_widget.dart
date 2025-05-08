@@ -1,7 +1,6 @@
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/models/content.dart';
-import 'package:creartive/ui/Cart_Screen/screen/Cart_Screen.dart.';
-import 'package:creartive/ui/Home/tabs/carttab.dart';
+import 'package:creartive/ui/Cart_Screen/screen/screen/Cart_Screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +59,7 @@ class PostWidget extends StatelessWidget {
                       ),
 
                       Text(
-                        content.price,
+                        "${content.price}",
                         style: TextStyle(
                           color: ColorManager.secondary,
                           fontSize: 20,
@@ -89,13 +88,7 @@ class PostWidget extends StatelessWidget {
 
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(), // Pass 3 (CartTab index)
-                  ),
-                );
-
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen(content)));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorManager.secondary,
