@@ -1,15 +1,42 @@
+import 'package:creartive/core/FireStoreHandler.dart';
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/main.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/Home/widget/hometabview_widget.dart';
 import 'package:creartive/ui/setting/screen/setting_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:creartive/models/user.dart' as MyUser;
 
-class ProfileTab extends StatelessWidget {
+class ProfileTab extends StatefulWidget {
   ProfileTab({super.key});
 
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
 
+class _ProfileTabState extends State<ProfileTab> {
+  MyUser.User? user;
+
+  bool isLoading=true;
+
+  void getUserData() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid != null) {
+      user = (await FireStoreHandler.getUser(uid));
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +98,13 @@ actions: [Padding(
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Amr Ali",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  user?.name?? "Loading...",
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
-                Text("amrelhaj10@gmail.com"),
+                Text(
+                  user?.email?? "Loading",
+
+                ),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

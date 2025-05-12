@@ -42,6 +42,8 @@ dependencies:
   fluttertoast: ^8.2.12
   firebase_core: ^3.13.0
   firebase_auth: ^5.5.3
+  cloud_firestore: ^5.6.7
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -81,10 +83,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: JacquesFrancois
+      fonts:
+        - asset: fonts/francios/JacquesFrancois-Regular.ttf
+          weight: 400
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
