@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
+import 'package:creartive/ui/login/screen/LoginScreen.dart';
+import 'package:creartive/ui/onboarding/screen/onboarding_screen.dart';
 import 'package:creartive/ui/welcom/screen/WeclomeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
             (){
               Navigator.pushReplacementNamed(context,
                 FirebaseAuth.instance.currentUser==null
-                    ?WelcomeScreen.routeName
+                    ?OnboardingScreen.routeName
                     :HomeScreen.routeName ,);
-
     }
 
     );
