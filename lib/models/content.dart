@@ -22,19 +22,19 @@ class FixedList{
   static List<Content> fixedContent=[
     Content("illustration", " A bold geometric dog illustration"
         " with striking black, white, and red shapes,"
-        " exuding a modern, artistic charm.   ", AssetsManager.Cat_woman, "4,000 LE"),
+        " exuding a modern, artistic charm.   ", AssetsManager.Cat_woman, "4000"),
 
     Content("illustration",
         "A minimalist lighthouse illustration with a glowing beacon, standing tall on rocky shores, surrounded by seagulls and calm waters.  "
-        , AssetsManager.lighthouse, "2,000 LE"),
+        , AssetsManager.lighthouse, "2000"),
 
     Content("illustration",
         " A bold geometric dog illustration with striking black, white, and red shapes, exuding a modern, artistic charm.    "
-        , AssetsManager.dog, "4,000 LE"),
+        , AssetsManager.dog, "4000"),
 
     Content("paint",
         "  A striking painting of a woman surrounded by red hands, symbolizing control, oppression, or inner turmoil with deep emotional impact.     "
-        , AssetsManager.redhands, "5,000 LE"),
+        , AssetsManager.redhands, "5000"),
 
 
 //3D

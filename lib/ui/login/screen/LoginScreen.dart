@@ -2,6 +2,7 @@ import 'package:creartive/core/FireBaseCodes.dart';
 import 'package:creartive/core/StringsManager.dart';
 import 'package:creartive/core/contsnts.dart';
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
+import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/core/reusable_component/DialogUtils.dart';
 import 'package:creartive/core/reusable_component/custom_field.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
@@ -53,19 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
-        ),
-      ),
       body: DecoratedBox(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AssetsManager.backG),
+            image: AssetImage(AssetsManager.background),
             fit: BoxFit.cover,
           ),
         ),
@@ -191,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: Text(
                       "Or Log in with",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: ColorManager.primary),
                     ),
                   ),
                   SizedBox(height: 10),
@@ -209,7 +201,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account? "),
+                      Text("Don't have an account? ",style: TextStyle(
+                        color: ColorManager.primary
+                      ),),
                       GestureDetector(
                         onTap:() => Navigator.pushReplacement(
                               context,

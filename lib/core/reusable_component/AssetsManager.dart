@@ -3,7 +3,7 @@ abstract final class AssetsManager{
   //lottie files
   static const String emptyCart="assets/images/emptycart.json";
   static const String onboarding1="assets/images/value.json";
-  static const String onboarding2="assets/images/draw.json";
+  static const String onboarding2="assets/images/second.json";
   static const String onboarding3="assets/images/chat.json";
 
   static const String home="assets/icons/home.svg";
@@ -15,6 +15,7 @@ abstract final class AssetsManager{
 static const String postImage="assets/images/postimage.png";
 static const String addImage="assets/images/addImage.png";
 static const String backG="assets/images/backg.jpg";
+static const String background="assets/images/background1.jpg";
 
   //images
 static const String fixedImage="assets/images/fixedArt.png";

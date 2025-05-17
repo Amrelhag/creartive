@@ -92,7 +92,7 @@ class PostWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CartScreen(), // Pass 3 (CartTab index)
+                    builder: (context) => CartScreen(content), // Pass 3 (CartTab index)
                   ),
                 );
 

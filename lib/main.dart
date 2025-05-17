@@ -5,6 +5,7 @@ import 'package:creartive/ui/onboarding/screen/onboarding_screen.dart';
 import 'package:creartive/ui/reset_password/screen/reset_password_screen.dart';
 import 'package:creartive/ui/setting/screen/setting_screen.dart';
 import 'package:creartive/ui/splash/screen/splash_screen.dart';
+import 'package:creartive/ui/visa/screen/visa_screen.dart';
 import 'package:creartive/ui/welcom/screen/WeclomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ debugShowCheckedModeBanner: false,
         SettingScreen.routeName:(_)=>SettingScreen(),
         EventScreen.routeName:(_)=>EventScreen(),
         OnboardingScreen.routeName:(_)=>OnboardingScreen(),
+
       },
       initialRoute: SplashScreen.routeName,
     );
