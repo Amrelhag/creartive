@@ -2,6 +2,8 @@ import 'package:creartive/core/FireStoreHandler.dart';
 import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/main.dart';
+import 'package:creartive/models/content.dart';
+import 'package:creartive/ui/Chat/chat_screen.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/Home/widget/hometabview_widget.dart';
 import 'package:creartive/ui/setting/screen/setting_screen.dart';
@@ -111,7 +113,12 @@ actions: [Padding(
                   children: [
                     Column(
                       children: [
-                        Text("1", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Content.contents.isEmpty
+                            ? Text(
+                              "0",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                            : Text("${Content.contents.length}"),
                         Text("Projects"),
                       ],
                     ),
@@ -157,7 +164,13 @@ actions: [Padding(
                           color: Color.fromARGB(255, 225, 221, 235)
                         ),
                         child: IconButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => UserLists(),
+                            ),
+                          );
+                          },
                           icon: Icon(Icons.mail)
                         ),
                       )

@@ -25,6 +25,7 @@ class _HomeTabState extends State<HomeTab> {
       child: Scaffold(
       backgroundColor: ColorManager.primary,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(16),

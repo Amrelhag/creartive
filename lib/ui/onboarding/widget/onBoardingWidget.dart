@@ -18,13 +18,15 @@ class OnBoardingWidget extends StatelessWidget {
 
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(onBoardingModel.title,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                color: ColorManager.primary,
-                fontSize: 32,
-                  fontFamily: "JacquesFrancois"
-              ),)
+              Expanded(
+                child: Text(onBoardingModel.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                  color: ColorManager.primary,
+                  fontSize: 32,
+                    fontFamily: "JacquesFrancois"
+                ),),
+              )
             ],
           ),
 
