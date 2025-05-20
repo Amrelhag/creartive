@@ -7,6 +7,7 @@ import 'package:creartive/ui/onboarding/screen/onboarding_screen.dart';
 import 'package:creartive/ui/welcom/screen/WeclomeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -41,13 +42,19 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: ColorManager.primary
-                  ),
-                  child: Lottie.asset("assets/images/splashanimation.json")),
+              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/logoc.png",height: 160,width: 160,),
+                ],
+              ),
             ),
+            Text("CreArtive",style: TextStyle(
+                fontSize: 48,
+                fontWeight: FontWeight.w500,
+                color: ColorManager.primary,
+              fontFamily: "JacquesFrancois"
+            ),),
+            Gap(16),
             Text("Welcome to our Community!",style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,

@@ -10,6 +10,7 @@ import 'package:creartive/ui/reset_password/screen/reset_password_screen.dart';
 import 'package:creartive/ui/signup/screen/SignupScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = "login";
@@ -68,6 +69,16 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset("assets/images/logoc.png",height: 120,width: 100,)
+                      ],
+                    ),
+                  ),
+                  Gap(16),
+
                   Padding(
                     padding: const EdgeInsets.only(left: 30),
                     child: Align(

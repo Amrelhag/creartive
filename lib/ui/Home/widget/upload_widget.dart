@@ -1,12 +1,14 @@
 import 'dart:io';
-
+import 'package:creartive/core/FireStoreHandler.dart';
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/core/reusable_component/DialogUtils.dart';
 import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/Home/widget/custome_button.dart';
 import 'package:creartive/ui/Home/widget/inputpost.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:creartive/models/user.dart' as MyUser;
 
 class UploadWidget extends StatefulWidget {
   final VoidCallback onSubmit;
@@ -18,6 +20,32 @@ class UploadWidget extends StatefulWidget {
 
 
 class _UploadWidgetState extends State<UploadWidget> {
+
+  MyUser.User? user;
+
+  bool isLoading=true;
+
+
+  void getUserData() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid != null) {
+      user = (await FireStoreHandler.getUser(uid));
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserData();
+  }
+
+
+
+
   final titlecontroler= TextEditingController();
   final pricecontroler= TextEditingController();
   final descreptioncontroler= TextEditingController();
@@ -107,7 +135,11 @@ validator: (value)=>value.isEmpty?" Enter title":null,
                                         Content(titlecontroler.text,
                                             descreptioncontroler.text,
                                             image!,
-                                            pricecontroler.text));
+                                            pricecontroler.text,
+                                       user?.name??"Loading...",
+                                            DateTime.now().millisecondsSinceEpoch.toString()
+
+                                        ));
                                     widget.onSubmit();
 Navigator.pushReplacementNamed(context,"Home");
 

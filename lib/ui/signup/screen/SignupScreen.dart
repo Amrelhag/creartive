@@ -12,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:creartive/models/user.dart' as MyUser;
+import 'package:gap/gap.dart';
 
 
 
@@ -75,6 +76,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset("assets/images/logoc.png",height: 120,width: 100,)
+                      ],
+                    ),
+                  ),
+                  Gap(16),
                   Padding(
                     padding: const EdgeInsets.only(left: 30),
                     child: Align(

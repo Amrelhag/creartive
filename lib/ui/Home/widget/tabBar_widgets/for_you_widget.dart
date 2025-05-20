@@ -35,8 +35,18 @@ class ForYouWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal:16 ),
               child: Row(mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Container(
-                    child: Expanded(child: Image.asset("assets/images/Events.png",fit: BoxFit.cover,)))
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Container(
+                      height: 220,
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage("assets/images/events.jpg"),
+    fit: BoxFit.cover,
+    ),
+    ),      )            ),
+                )
               ],),
             ),
           ),

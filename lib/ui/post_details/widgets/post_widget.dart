@@ -4,6 +4,7 @@ import 'package:creartive/ui/Cart_Screen/screen/Cart_Screen.dart.';
 import 'package:creartive/ui/Home/tabs/carttab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class PostWidget extends StatelessWidget {
   final Content content;
@@ -20,10 +21,19 @@ class PostWidget extends StatelessWidget {
               padding: const EdgeInsets.all(25),
               child: Row(
                 children: [
-                  Image.asset("assets/images/userimage.png"),
-                  Text("  Marcos Emad",style: TextStyle(
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30), // Half of the width/height to make it circular
+                    child: Image.asset(
+                      content.profileImage,
+                      height: 60,
+                      width: 60,
+                      fit: BoxFit.cover, // Ensures the image fills the circular area nicely
+                    ),
+                  ),
+                  Gap(16),
+                  Text(content.userName,style: TextStyle(
                     color: ColorManager.secondary,
-                    fontSize: 16,fontWeight: FontWeight.w500
+                    fontSize: 18,fontWeight: FontWeight.w700
                   ),),
                 ],
               ),

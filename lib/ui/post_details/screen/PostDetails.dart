@@ -3,10 +3,17 @@ import 'package:creartive/models/content.dart';
 import 'package:creartive/ui/post_details/widgets/post_widget.dart';
 import 'package:flutter/material.dart';
 
-class PostDetails extends StatelessWidget {
+class PostDetails extends StatefulWidget {
   final Content content;
   const PostDetails({super.key,required this.content});
   static const String routeName="post";
+
+  @override
+  State<PostDetails> createState() => _PostDetailsState();
+}
+
+class _PostDetailsState extends State<PostDetails> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +39,7 @@ body: SingleChildScrollView(
     ),
     child: Column(
       children: [
-        PostWidget(content: content),
+        PostWidget(content: widget.content),
 
         SizedBox(height: 20,)
       ],
