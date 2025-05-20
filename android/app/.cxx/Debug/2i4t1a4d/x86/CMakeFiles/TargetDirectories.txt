@@ -1,0 +1,2 @@
+C:/flutterapps/creartive-1/android/app/.cxx/Debug/2i4t1a4d/x86/CMakeFiles/edit_cache.dir
+C:/flutterapps/creartive-1/android/app/.cxx/Debug/2i4t1a4d/x86/CMakeFiles/rebuild_cache.dir

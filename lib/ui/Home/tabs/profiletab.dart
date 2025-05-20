@@ -3,6 +3,7 @@ import 'package:creartive/core/reusable_component/AssetsManager.dart';
 import 'package:creartive/core/reusable_component/ColorManager.dart';
 import 'package:creartive/main.dart';
 import 'package:creartive/models/content.dart';
+import 'package:creartive/ui/Chat/chat_page.dart';
 import 'package:creartive/ui/Chat/chat_screen.dart';
 import 'package:creartive/ui/Home/screen/HomeScreen.dart';
 import 'package:creartive/ui/Home/widget/hometabview_widget.dart';
@@ -165,9 +166,14 @@ actions: [Padding(
                         ),
                         child: IconButton(
                           onPressed: (){
+                            final receiverUserEmail = user?.email ?? '';
+                            final receiverUserID = user?.id ?? '';
                             Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => UserLists(),
+                              builder: (context) => ChatPage(
+                                receiverUserEmail: receiverUserEmail,
+                                receiverUserID: receiverUserID,
+                              ),
                             ),
                           );
                           },
